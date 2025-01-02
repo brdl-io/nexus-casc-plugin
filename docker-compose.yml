@@ -1,6 +1,5 @@
 ---
 # Useful for local debugging of the scripts.
-version: '3.8'
 
 secrets:
   password_johndoe:
