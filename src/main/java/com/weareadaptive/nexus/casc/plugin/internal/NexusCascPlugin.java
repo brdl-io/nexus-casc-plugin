@@ -469,7 +469,7 @@ public class NexusCascPlugin extends StateGuardLifecycleSupport {
             });
             routingRuleStore.list().forEach(existingRule -> {
                 if (repository.getRoutingRules().stream().noneMatch(rr -> existingRule.name().equals(rr.getName()))) {
-                    if (existingRoutingRuleIdsInUse.stream().noneMatch(id -> id.equals(existingRule.id()))) {
+                    if (existingRoutingRuleIdsInUse.stream().noneMatch(id -> existingRule.id().equals(id))) {
                         log.info("Pruning routing rule {}", existingRule.name());
                         routingRuleStore.delete(existingRule);
                     } else {
@@ -508,7 +508,7 @@ public class NexusCascPlugin extends StateGuardLifecycleSupport {
                     set.add(policyName);
                     cleanup.put("policyName", set);
                 } else if (policyName instanceof List) {
-                    cleanup.put("policyName", new HashSet<>((Collection<Object>) policyName));
+                    cleanup.put("policyName", new HashSet<>((Collection<?>) policyName));
                 }
             }
         }
