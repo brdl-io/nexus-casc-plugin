@@ -17,7 +17,7 @@
     <properties>
         <nexus.docker.version>3.75.1</nexus.docker.version>
         <nexus-repository.version>3.70.1-02</nexus-repository.version>
-        <maven-surefire-plugin.version>3.3.1</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
         <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
         <build-helper-maven-plugin.version>3.6.0</build-helper-maven-plugin.version>
         <docker-compose-maven-plugin.version>4.0.0</docker-compose-maven-plugin.version>
@@ -266,7 +266,19 @@
             </plugin>
         </plugins>
     </build>
-
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>groovy-plugins-release</id>
+                    <url>https://groovy.jfrog.io/artifactory/plugins-release</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
     <!--
     <repositories>
         <repository>
@@ -299,17 +311,4 @@
     Because fof missing dependencies on Maven Central for latest nexus-plugins
     see https://github.com/sonatype/nexus-public/issues/525
     -->
-    <profiles>
-        <profile>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>groovy-plugins-release</id>
-                    <url>https://groovy.jfrog.io/artifactory/plugins-release</url>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
-    </profiles>
 </project>

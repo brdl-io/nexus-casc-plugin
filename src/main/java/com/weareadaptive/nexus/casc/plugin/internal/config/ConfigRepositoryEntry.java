@@ -1,7 +1,5 @@
 package com.weareadaptive.nexus.casc.plugin.internal.config;
 
-import org.sonatype.nexus.common.entity.EntityId;
-
 import java.util.HashMap;
 import java.util.Map;
 
